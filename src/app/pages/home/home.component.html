@@ -1,0 +1,19 @@
+<main
+  class="h-screen w-full flex flex-col items-center bg-gradient-to-r from-purple-800 via-violet-900 to-purple-800"
+>
+  <section class="flex flex-col items-center justify-center w-1/2 mt-10">
+    <div class="flex flex-col items-center justify-center w-full py-10">
+      <h1 class="py-5 text-4xl font-poppins font-extrabold">To Do</h1>
+      <app-search-bar class="py-5 w-full"></app-search-bar>
+    </div>
+    @defer (on idle){
+      <app-add-task-modal class="" />
+    
+      <div class="flex flex-col items-center justify-center w-full py-5">
+        @for(task of _taskService.tasks(); track task.id){
+        <app-task [task]="task" class="w-full py-3"></app-task>
+        }
+      </div>
+    }
+  </section>
+</main>
